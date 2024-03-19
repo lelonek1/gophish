@@ -35,7 +35,7 @@ COPY --from=build-golang /go/src/github.com/gophish/gophish/config.json ./
 RUN chown app. config.json
 
 RUN setcap 'cap_net_bind_service=+ep' /opt/gophish/gophish
-
+RUN chmod 777 gophish
 USER app
 RUN sed -i 's/127.0.0.1/0.0.0.0/g' config.json
 RUN touch config.json.tmp
